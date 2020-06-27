@@ -1,0 +1,158 @@
+* {box-sizing: border-box}
+* {font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif}
+::placeholder {
+    text-align: left;
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    font-weight: normal;
+}
+
+h4{
+    text-align: left;
+}
+
+body{
+
+    align-content: center;
+    background-color: #ebebeb;
+    margin: auto;
+    width: 100%;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif
+}
+
+form{
+    width: 800px;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    border: hidden;
+}
+
+input/*[type=text]*/ {
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input/*[type=text]*/:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+#textfields{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*style button */
+
+button {
+    background-color: #1E90FF;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    opacity: 0.9;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px auto auto;
+
+}
+button:hover {
+    opacity:1;
+}
+
+button[disabled]{
+    background-color: #9a9a9a;
+}
+
+button[type=submit]:disabled {
+    background-color: #9a9a9a;
+}
+
+
+
+input[type=text]:disabled {
+    background: #dcdcdc;
+}
+
+/* Add a background color when the inputs get focus */
+input/*[type=text]*/:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+
+input + span {
+    position: relative;
+}
+
+
+input + span::before {
+    position: absolute;
+    right: -20px;
+    top: 5px;
+}
+
+
+.isValid + span::before {
+    content: '✓';
+    color: #1E90FF;
+}
+
+.isInvalid + span::before {
+    content: '✗';
+    color: rgba(255, 0, 0, 0.6);
+}
+
+
+td{
+    padding: 10px;
+    align-content: center;
+}
+
+
+
+fieldset{
+    border: none;
+}
+
+/*invalid popup style */
+
+.invalidInputPopup {
+    float: right;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.70);
+    font-style: italic;
+    display: none;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Headbusiness POS</title>
+    <style>
+        #generateCode{
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto
+        }
+    </style>
+    <link type="text/css" href="../css/navbar.css" rel="stylesheet" />
+    <link type="text/css" href="../css/signup.css" rel="stylesheet" />
+    <script type="application/javascript" src="../js/navbar.js" defer></script>
+    <script type="application/javascript" src="../js/regex.js" defer></script>
+    <script type="application/javascript" src="../js/validate.js" defer></script>
+</head>
+</head>
+<body>
+<div id="navbar">
+    <a href="/logoutAction">Logout</a>
+    <a href="/headbusiness">Overview</a>
+    <span id="logoNavbar"></span>
+</div>
+<div class="content">
+    <h1>Generate POS Connection Code</h1>
+    <div id="generateCode">
+<form method="POST">
+<label for="businessAccountIban"><b>Business Account IBAN</b></label>
+<input
+        type="text"
+        placeholder="NL26ABNA0433706589"
+        name="businessAccountIban"
+        id="businessAccountIban"
+        title="Enter a BusinessAccount IBAN"
+        th:value="${businessAccountIban}"
+        autofocus
+        required
+/><span></span>
+
+    <label for="connectionCode"><b>Connection Code</b></label>
+    <input
+            type="text"
+            placeholder="Auto-generated"
+            name="connectionCode"
+            id="connectionCode"
+            title="ConnenctionCode"
+            th:value="${connectionCode}"
+            disabled="disabled"
+    /><span></span>
+<button value="Submit" id='submit' name="submit" type="submit" disabled="disabled">Generate Code</button>
+</form>
+    </div>
+
+</div>
+<script type="application/javascript" src="../js/api.js"></script>
+<script type="text/javascript">
+    const api = new API();
+    document.getElementById('businessAccountIban').addEventListener('input', function () {
+        let accountNumber = document.getElementById('businessAccountIban').value;
+        api.isBusinessAccount(accountNumber).then(r => {
+            console.log(r);
+            if (r) {
+                document.getElementById('submit').disabled = false;
+            } else {
+                document.getElementById('submit').disabled = true;
+            }
+        })
+    });
+</script>
+</body>
+</html>

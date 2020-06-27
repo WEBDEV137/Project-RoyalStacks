@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://java.sun.com/JSP/Page" xmlns:selected="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>accountdetails</title>
+   <link type="text/css" href="css/accountdetails.css" rel="stylesheet" />
+    <link type="text/css" href="css/navbar.css" rel="stylesheet"/>
+
+
+</head>
+<body id="body" th:object="${account}">
+<!-- Navigation bra section -->
+<div id="navbar" >
+
+    <a href="/logoutAction">Logout</a>
+    <a href="/accountOverview">Account Overview</a>
+    <a id="makeTransaction" class="aclass">New Money Transfer</a>
+    <a id="addHolder" class="aclass">Add Accountholder</a>
+
+    <form id="transactionForm" th:action="@{transaction}"  method="get">
+        <input type="hidden"  name="accountId" value="DoTransfer" th:value="${account.accountId}" />
+    </form>
+    <form id="accountHolderForm" th:action="@{addaccountholder}" method="get">
+        <input type = "hidden" id = "addaccountholderbutton" th:name="accountNumber" th:value="${account.accountNumber}" value = "Add Accountholder"/>
+    </form>
+    <span id="logoNavbar"></span>
+
+
+</div>
+
+
+<div class="content">
+    <div id="wrapper" class="wrapper">
+<span id="dateTime"></span><br>
+    <h1>Account details</h1>
+
+<span hidden id="accountNumber" th:value="${account.accountNumber}" th:text="${account.accountNumber}"></span>
+<div class="infoTable">
+    <div class="inforow">
+        <div class = "infocell infoheader">IBAN</div>
+        <select class = "infocell" id="select1">
+            <option id="option1" th:each="account : ${accounts}"  name="accountNumber"  th:value="${account.accountNumber}"  th:text="${account.accountNumber}"></option>
+        </select>
+    </div>
+    <div class="inforow">
+        <div class = "infocell infoheader">Balance</div>
+        <div id="balance" class = "infocell">€ <span th:text="${#numbers.formatDecimal(account.balance, 0,'POINT', 2, 'COMMA')}"></span></div>
+    </div>
+    <div class="inforow">
+        <div class = "infocell infoheader">Account Type</div>
+        <div class="infocell"><span th:text="${account.accountType}"></span></div>
+    </div>
+    <div class="inforow">
+        <div class = "infocell infoheader">Account holders</div>
+        <Select  size="2" id="select" class="infocell" >
+                <option id="option" th:each="customer : ${account.accountHolders}"><span th:text="${customer.firstName}"></span>  <span th:text="${customer.lastName}"></span></option>
+        </Select>
+    </div>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+<script src="js/navbar.js"></script>
+<script src="js/accountdetails.js"></script>
+</body>
+<script>
+document.getElementById("makeTransaction").addEventListener("click",function(){
+document.getElementById("transactionForm").submit();
+});
+
+document.getElementById("addHolder").addEventListener("click",function(){
+    document.getElementById("accountHolderForm").submit();
+});
+
+
+
+</script>
+</html>

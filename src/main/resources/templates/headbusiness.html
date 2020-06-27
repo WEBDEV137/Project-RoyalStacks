@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Head Business Overview</title>
+    <style>
+        * {box-sizing: border-box}
+
+        * {font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif}
+
+        body {
+            align-content: center;
+            background-color: #ebebeb;
+            margin: auto;
+            width: 100%;
+            font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+            padding-bottom: 50px;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        table {
+            font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <link type="text/css" href="css/navbar.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="navbar">
+    <a href="/logoutAction">Logout</a>
+    <a href="/pos/employee">Connect POS</a>
+    <span id="logoNavbar"></span>
+</div>
+<h1 class="content">Head Business Overview</h1>
+<h2>Welcome <span th:text="${employee.firstName}"/></h2>
+<h3>Top 10 customers with the highest balance on their business accounts:</h3>
+<table style="width:65%">
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Total balance</th>
+    </tr>
+    <tr th:each="topBusinessAccount: ${top10BusinessAccounts}">
+        <td th:text="${topBusinessAccount.firstName}"/>
+        <td th:text="${topBusinessAccount.lastName}"/>
+        <td th:inline="text">€ [[${#numbers.formatDecimal(topBusinessAccount.totalBalance, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
+    </tr>
+</table>
+<h3>Average balances by sector:</h3>
+<table style="width:65%">
+    <tr>
+        <th>Sector</th>
+        <th>Average balance</th>
+    </tr>
+    <tr th:each="sectorAndAverageBalance: ${sectorAndAverageBalances}">
+        <td th:text="${sectorAndAverageBalance.sector.displayValue}"/>
+        <td th:inline="text">€ [[${#numbers.formatDecimal(sectorAndAverageBalance.totalBalance, 1, 'DEFAULT', 2, 'DEFAULT')}]]</td>
+    </tr>
+</table>
+<h3>Top 10 companies with the most transactions on their business accounts:</h3>
+<script type="text/javascript" src="js/topTransactions.js"></script>
+<script src="js/navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Overview</title>
+
+    <link type="text/css" href="css/navbar.css" rel="stylesheet" />
+<!--    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />-->
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+
+    <style>
+        * {box-sizing: border-box}
+        * {font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif}
+        body{
+            align-content: center;
+            background-color: #ebebeb;
+            margin: auto;
+            width: 100%;
+            font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif
+        }
+        input[type=submit] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #1E90FF;
+            color: white;
+            opacity: 0.9;
+        }
+        input[type=submit]:focus{
+            background-color: #ddd;
+            outline: none;
+        }
+        #wrapper{
+            width: 60%;
+            margin: auto;
+        }
+        #accountdetailsForm{
+            padding: 20px;
+        }
+        table{
+            width: 100%;
+            border-spacing: 0;
+        }
+        h1 {
+       /*     font-size:29px;*/
+            text-align: center;
+            font-weight: bold;
+     /*       padding: 10px;*/
+        }
+
+        h2{
+        /*    font-size:20px;*/
+            font-weight: lighter;
+            text-align: center;
+        }
+        th{
+            text-align: center;
+            color: #fff;
+            line-height: 1.2;
+            padding-bottom: 19px;
+            padding-top: 19px;
+        }
+        td{
+            text-align: center;
+            color: #666666;
+            line-height: 1.2;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        thead{
+            color: #ffffff;
+            background: #1E90FF;
+        }
+        tr.trLink{
+            cursor: pointer;
+           /* border-collapse: collapse;*/
+            background: #fff;
+        }
+        tr.trLink:hover{
+            background: rgba(30,144,255, 0.25);
+        }
+        #openAccount, #acceptInvite{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body th:object="${customer}">
+
+<div id="navbar">
+    <a href="/logoutAction" font-size="15px">Logout</a>
+    <a id="openAccount" class="aclass">Open New Account</a>
+    <a id="acceptInvite" class="aclass">Accept Invite</a>
+    <span id="logoNavbar"></span>
+</div>
+
+<div id="wrapper" class="content">
+
+<div id="Account_overview">
+    <h1>Account overview</h1>
+    <h2>Hello <span th:text="${customer.firstName}"></span></h2>
+    <form id="accountdetailsForm" th:action="@{/accountdetails}" method="get">
+        <input id="inputdetails" type="hidden" value="dummy">
+        <table id="accountdetailstable">
+            <thead>
+                <tr>
+                    <th class="cell">IBAN</th>
+                    <th class="cell">Account balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="trLink" th:each="account : ${list}">
+                    <td th:text="${account.accountNumber}"></td>
+                    <td><span>€ </span> <span th:text="${#numbers.formatDecimal(account.balance, 1,'POINT', 2, 'COMMA')}"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <form id="openAccountForm" th:action="@{openaccount}"  method="get">
+        <input type="hidden" name="submitbutton" value="Create a new account" />
+    </form>
+    <form id="acceptInviteForm" th:action="@{acceptaccountholderinvite}"  method="get">
+        <input type="hidden" name="submitbutton" value="Accept invite" />
+    </form>
+</div>
+
+<script src="js/navbar.js"></script>
+
+</div>
+</body>
+</html>
+
+<script type="text/javascript"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+        //Go to account-details of specific account
+        // add eventlistener to all table-cells - on click- go to account details
+        document.querySelectorAll('#accountdetailstable tr')
+        .forEach(e => e.addEventListener("click", function() {
+            // 1 - get acountnumber clicked
+            // Here, `this` refers to the element the event was hooked on
+            let accountnumber = this.cells[0].innerHTML;
+
+            // 2 - fire get request with parameter to go to account details
+            let input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "accountNumber").val(accountnumber);
+            $('#accountdetailsForm').append($(input)).submit();
+        }));
+
+        // Open new account-action
+        document.getElementById("openAccount").addEventListener("click",function(){
+                document.getElementById("openAccountForm").submit();
+            })
+
+        // Accept account-holders invite
+        document.getElementById("acceptInvite").addEventListener("click",function(){
+            document.getElementById("acceptInviteForm").submit();
+        })
+    })
+
+</script>
+

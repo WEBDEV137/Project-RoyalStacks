@@ -1,0 +1,247 @@
+body {
+    font: 71%/1.5 Helvetica;
+    background: #666666;
+    font-weight: lighter;
+    font-size: 20px;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    align-content: center;
+
+}
+
+.keyboard {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.keyboard li {
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid rgba(249, 249, 249, 0.24);
+    border-radius: 5px;
+}
+
+
+#displayAccountNumber  {
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 270px;
+    height: 60px;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #f9f9f9;
+    border-radius: 5px;
+}
+
+#displayPos {
+    float: left;
+    margin: 0 5px 0px 0;
+    width: 270px;
+    height: 60px;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #f9f9f9;
+    border-radius: 5px;
+
+}
+
+#displayL {
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 85px;
+    list-style: none;
+
+}
+
+#displayR {
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    list-style: none;
+
+}
+
+.clearl, .stop {
+    clear: left;
+}
+.keyboard .delete {
+    width: 70px;
+}
+.keyboard .return {
+    width: 88px;
+}
+
+.keyboard .stop {
+    width: 90px;
+}
+
+.keyboard .stop, .keyboard .delete, .keyboard .return, .keyboard .bottom{
+    font-size: 20px;
+}
+
+.keyboard li:hover {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    border-color: #e5e5e5ab;
+    cursor: pointer;
+}
+
+.pressed {
+    position: relative;
+    cursor: pointer;
+    background-color: #d6d6d6;
+    box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+.titles {
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+#logo{
+    text-align: center;
+}
+
+#themachineLeft {
+    width: 370px;
+    height: 580px;
+    margin-top:60px;
+    margin-right: auto;
+    margin-left: auto;
+    background: rgba(246, 246, 246, 0.92);
+    border-radius: 25px;
+}
+
+#themachineRight {
+    border-radius: 25px;
+    width: 370px;
+    height: 580px;
+    margin-top:60px;
+    margin-right: auto;
+    margin-left: auto;
+    background: rgba(246, 246, 246, 0.92);
+}
+
+#idNumber {
+    background: #545454;
+    color:#fff;
+    display:block;
+    float: left;
+    margin:10px 10px 0 0;
+    padding:5px 10px;
+}
+
+h2{
+    margin-top: 10px;
+    padding-top: 7px;
+    padding-left: 10px;
+    color: #f1f1f1;
+}
+
+h3 {
+    color: #666666;
+    text-align: center;
+    padding-top: 18px;
+    font-size: 14px;
+    font-weight: lighter;
+}
+.selected {
+    background-color: #d6d6d6;
+}
+#transactionInfo {
+    float: left;
+    margin: 0 0 15px 0;
+    width: 270px;
+    height: 50px;
+    font-size: 22px;
+    line-height: 60px;
+    text-align: center;
+    background: rgba(214, 214, 214, 0.35);
+    border: 1px solid rgba(249, 249, 249, 0.61);
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: inset 1px 1px 3px 0px rgba(0, 0, 0, 0.03);
+}
+
+#response {
+    float: left;
+    margin: 0 0 15px 0;
+    width: 270px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid rgba(249, 249, 249, 0.61);
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: inset 1px 1px 3px 0px rgba(0, 0, 0, 0.03);
+}
+
+#responseL {
+    float: left;
+    margin: 0 0 15px 0;
+    width: 270px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid rgba(249, 249, 249, 0.61);
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: inset 1px 1px 3px 0px rgba(0, 0, 0, 0.03);
+}
+.success {
+    background: rgba(41, 228, 10, 0.17);
+}
+
+.failed {
+    background: rgb(255, 212, 211)
+}
+
+.neutral {
+    background: rgba(214, 214, 214, 0.35)
+}
+
+#leftScreen{
+    width: 50%;
+    float: left;
+    height: 100vh;
+    background: #91cb8e;
+}
+
+#rightScreen{
+    width: 50%;
+    float: right;
+    height: 100vh;
+    background: #718ecb;
+}

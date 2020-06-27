@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>openaccounts</title>
+    <link type="text/css" href="css/openaccount.css" rel="stylesheet" />
+    <link type="text/css" href="css/navbar.css" rel="stylesheet"/>
+</head>
+<body th:object="${account}">
+<div id="navbar" >
+    <a href="/logoutAction">Logout</a>
+    <a href="/accountOverview">Account Overview</a>
+    <span id="logoNavbar"></span>
+</div>
+
+<h1>Open an account</h1>
+
+<fieldset th:disabled = ${form}>
+    <h4><span th:text="${confirmation}"/> <span th:text="*{accountNumber}"/> </h4>
+    <form th:action="@{/openaccount}" id="form" class="form" method="post" >
+    <div id="radiobutton">
+        <input type="radio" name="accountType"  id="private" th:field="*{accountType}" value="private" onclick="hideBusinessFields()" required>
+        <label for="private">Private account</label>
+        <input type="radio" name="accountType" id="business" th:field="*{accountType}" value="business" onclick="showBusinessFields()"/>
+        <label for="business">Business account</label><br>
+    </div>
+
+        <table id="businessFields" class="businessFieldsClass" >
+
+            <tr>
+                <td><b>Company name </b></td>
+
+                <td>
+                    <label>
+                        <div id="InvalidCompanyName" class="invalidInputPopup"><span>Only alphanumerical characters and + - @ and & accepted</span></div>
+                        <input type="text"
+                               id="companyName"
+                               placeholder="companyName"
+                               th:field="*{companyName}"
+                               th:text="${companyName_error}"
+                                /><span></span>
+                      <!--  <span th:text="${companyName_error}"/>-->
+                    </label>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td><b>Kvk number </b> </td>
+
+                <td>
+                <label>
+                    <div id="InvalidKvkNumber" class="invalidInputPopup"><span>Kvk number needs to have 8 digits</span></div>
+                    <input type="text"
+                           id="kvkNumber"
+                           placeholder="kvkNumber"
+                           th:field="*{kvkNumber}"
+                           th:text="${kvkNumber_error}"/><span></span>
+                </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td><b>Vat number</b>  </td>
+
+                <td>
+                    <div id="invalidVatNumber" class="invalidInputPopup"></div>
+                    <label>
+
+                    <input type="text"
+                           name="VAT"
+                           id="vatNumber"
+                           placeholder="NL123456789B00"
+                           th:field="*{vatNumber}"
+                           th:text="${vatNumber_error}"
+                         /><span></span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Sector</b></td>
+                <td>
+                    <label for="sector"></label><select id="sector" name="sector" onchange="showAndHideSubmitButton()">
+                        <option value=""></option>
+                        <option th:each="sectorOpt : ${T(royalstacks.app.model.Sector).values()}"
+                        th:value="${sectorOpt}" th:text="${sectorOpt.displayValue}"></option>
+                    </select><span></span>
+                </td>
+            </tr>
+        </table>
+        <div>
+        <button type="submit" id="submitButton"  value="Create account" disabled="disabled">Create account</button>
+        </div>
+    </form>
+
+</fieldset>
+
+</body>
+</html>
+
+<script src="js/navbar.js"></script>
+<script src="js/accountValidation.js"></script>
+
+
+
+

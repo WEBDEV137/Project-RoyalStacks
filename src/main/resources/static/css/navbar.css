@@ -1,0 +1,52 @@
+#navbar {
+    overflow: hidden;
+    background-color: #1e90ff;
+}
+
+/* Navbar links */
+#navbar a {
+    float: left;
+    display: inline;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+#navbar a:hover {
+    float: left;
+    display: inline;
+    color: #1e90ff;
+    background: #ebebeb;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+#logoNavbar{
+    font-family: 'DejaVu Sans', Arial, Helvetica, serif;
+    font-weight: bolder;
+    text-align: right;
+    display: block;
+    font-size: 13px;
+    padding: 14px;
+    color: #fffcde;
+    text-decoration: none;
+}
+
+/* Zet content op pagina onder navbar */
+.content {
+    padding-top: 16px;
+}
+
+/* Wordt toegevoegd in JavaScript als er gescrollt wordt */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Voegt padding toe zodat het bij snel scrollen consistent blijft */
+.sticky + .content {
+    padding-top: 60px;
+}

@@ -1,0 +1,146 @@
+* {box-sizing: border-box}
+* {font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif}
+::placeholder {
+    text-align: left;
+
+}
+
+h1{
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+}
+body{
+
+    align-content: center;
+    background-color: #ebebeb;
+    margin: auto;
+    width: 100%;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+
+form{
+    width: 800px;
+    margin: auto;
+    height: auto;
+    padding-left: 100px;
+    padding-right: 100px;
+    overflow: hidden;
+    border: hidden;
+
+}
+
+
+
+input[type=text] {
+
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+
+
+/*style button */
+
+button {
+    background-color: #1E90FF;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    opacity: 0.9;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px auto auto;
+
+}
+button:hover {
+    opacity:1;
+}
+
+button[disabled]{
+    background-color: #9a9a9a;
+}
+
+button[type=submit]:disabled {
+    background-color: #9a9a9a;
+}
+
+
+
+input[type=text]:disabled {
+    background: #dcdcdc;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+
+input + span {
+    position: relative;
+}
+
+
+input + span::before {
+    position: absolute;
+    right: -20px;
+    top: 5px;
+}
+#sector{
+    padding: 10px;
+}
+
+
+
+.isValid + span::before {
+    content: '✓';
+    color: #1E90FF;
+}
+
+.isInvalid + span::before {
+    content: '✗';
+    color: rgba(255, 0, 0, 0.6);
+}
+
+
+td{
+    padding: 10px;
+    align-content: center;
+}
+
+
+
+fieldset{
+    border: none;
+}
+
+/*invalid popup style */
+
+.invalidInputPopup {
+    float: right;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.70);
+    font-style: italic;
+    display: none;
+    width: 100%;
+
+}
+
+
+

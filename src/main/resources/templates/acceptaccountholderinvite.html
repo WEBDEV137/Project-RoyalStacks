@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Accept invite</title>
+    <link type="text/css" href="css/navbar.css" rel="stylesheet" />
+    <link type="text/css" href="css/acceptaccountholderinvite.css" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div id="navbar">
+    <a href="/logoutAction">Logout</a>
+    <a class="active" href="/accountOverview">Account Overview</a>
+    <span id="logoNavbar"></span>
+</div>
+
+<h1 class="content">Accept account</h1>
+<h3 class="content"> Enter the account number and verification code.</h3>
+<form id="form" method="post" class="form">
+
+    <div id="textfields">
+
+    <label for="accountNumber">Account number</label>
+    <input
+            type="text"
+            placeholder="NL00ROYA0000000000"
+            name="accountNumber"
+            id="accountNumber"
+            title="Enter the account number"
+            th:value="${accountNumber}"
+            required
+    />
+
+    <span></span>
+
+
+    <label for="verificationCode">Verification code</label>
+    <input
+            type="number"
+            placeholder="12345"
+            name="verificationCode"
+            id="verificationCode"
+            title="Enter the five-digit code"
+            th:value="${verificationCode}"
+            step="1"
+            min="0"
+            required
+    />
+
+    <span></span>
+
+
+    <td><button type="submit" name="accept" id="acceptButton" disabled=true value="Accept invitation">Accept account</button></td>
+
+    <h4><span th:text="${message}"/></h4>
+
+    </div>
+
+</form>
+
+</body>
+
+<script src="js/navbar.js"></script>
+<script src="js/acceptaccountholderinvite.js" defer></script>
+
+</html>

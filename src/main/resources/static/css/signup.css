@@ -1,0 +1,257 @@
+* {box-sizing: border-box}
+* {font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif}
+
+h1{
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    padding: 5px;
+}
+
+body{
+    align-content: center;
+    background-color: #ebebeb;
+    margin: auto;
+    width: 100%;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif
+}
+
+#allFields{
+    padding: 10px;
+}
+
+#form{
+    width: 800px;
+    height: 600px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    border: hidden;
+
+}
+
+#formLeft{
+    width: 360px;
+    float:left;
+    margin-right: 30px;
+}
+
+#formRight{
+    width: 360px;
+    float:left;
+
+    margin-left: 30px;
+}
+
+
+fieldset{
+    border: none;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=number] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+input[type=text]:disabled, input[type=password]:disabled, input[type=email]:disabled, input[type=number]:disabled {
+    background: #dcdcdc;
+}
+
+input + span {
+    position: relative;
+}
+
+input + span::before {
+    position: absolute;
+    right: -20px;
+    top: 5px;
+}
+
+input[id=password]{
+    width: 85%;
+    padding-right: 0px;
+
+}
+
+#showPasswordButton{
+    height: 45px;
+    width: 15%;
+    background: #f1f1f1;
+    border: #f1f1f1;
+}
+
+.isValid + span::before {
+    content: '✓';
+    color: #1E90FF;
+}
+
+.isInvalid + span::before {
+    content: '✗';
+    color: rgba(255, 0, 0, 0.6);
+}
+
+
+/* Set a style button */
+button {
+    background-color: #1E90FF;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+    opacity: 0.9;
+    font-size: 16px;
+
+}
+button:hover {
+    opacity:1;
+}
+
+button[disabled]{
+    background-color: #9a9a9a;
+}
+
+#signUpButton{
+    float: right;
+    font-weight: bold;
+    padding-top: 20px;
+    margin: auto 20px auto auto;
+}
+
+#passRequirements {
+    width: 100%;
+    overflow: hidden;
+    border: hidden;
+    font-size: 12px;
+    line-height: 0.4;
+    font-weight: bold;
+}
+
+#passRequirements1of2 {
+    width: 50%;
+    float:left;
+    display: none;
+    margin-bottom: 10px;
+}
+#passRequirements2of2 {
+    width: 50%;
+    float: left;
+    display: none;
+    margin-bottom: 10px;
+}
+
+.invalidInputPopup {
+    float: right;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.70);
+    font-style: italic;
+    display: none;
+}
+
+
+/* maakt text groen bij juiste invoer */
+.passReqValid {
+    color: rgba(0, 128, 0, 0.70);
+}
+
+.passReqValid:before {
+    position: relative;
+    left: -35px;
+}
+
+/* maakt tekst rood bij foute invoer */
+.passReqInvalid {
+    color: rgba(255, 0, 0, 0.70);
+}
+
+.passReqInvalid:before {
+    position: relative;
+    left: -35px;
+}
+
+#names {
+    width: 800px;
+    overflow: hidden;
+    border: 0;
+}
+
+#firstNameDiv {
+    width: 160px;
+    float:left;
+    margin-right: 20px;
+}
+#lastNameDiv {
+    width: 160px;
+    float: left;
+    margin-left: 20px;
+}
+
+#addressFields{
+    width: 400px;
+    overflow: hidden;
+    border: 0;
+}
+#cityStreet {
+    width: 800px;
+    overflow: hidden;
+    border: 0;
+}
+
+#cityDiv {
+    width: 160px;
+    float:left;
+    margin-right: 20px;
+}
+#streetDiv {
+    width: 160px;
+    float: left;
+    margin-left: 20px;
+}
+
+#postalCodeWrapper{
+    width: 120px;
+    float:left;
+    margin-right: 40px;
+}
+
+#houseNumberWrapper{
+    width: 80px;
+    float: left;
+    margin-right: 40px;
+}
+
+#suffixWrapper{
+    width: 80px;
+    float: left;
+}
+
+#showPassword{
+    float:right;
+}
+

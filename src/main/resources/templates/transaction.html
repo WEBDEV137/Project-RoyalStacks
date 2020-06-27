@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer Money</title>
+    <link type="text/css" href="css/navbar.css" rel="stylesheet" />
+    <link type="text/css" href="css/transaction.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="navbar">
+        <a href="/logoutAction">Logout</a>
+        <a class="active" href="/accountOverview">Account Overview</a>
+        <span id="logoNavbar"></span>
+    </div>
+    <div class="content">
+        <h1 class="content">Transfer Money</h1>
+        <h3><span th:text="${notification}"/></h3>
+        <div id="forms">
+            <form id="form"   method="post" class="form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <label for="fromAccountNumber"><b>From Account</b></label>
+                <select id="fromAccountNumber" name="fromAccountNumber" th:value="${fromAccountNumber}">
+                    <option th:each="account : ${account}"  th:value="${account.accountNumber}" th:label="*{account.accountNumber} + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Balance: €' + *{account.balance}" th:text="${account.balance}"></option>
+                </select>
+                <span></span>
+                <span></span>
+                <label for="toAccountNumber"><b>To Account</b></label>
+
+                <input
+                        type="text"
+                        placeholder="NL12ROYA0123456789"
+                        name="toAccountNumber"
+                        id="toAccountNumber"
+                        title="A valid account number"
+                        th:value="${toAccountNumber}"
+                        required
+                />
+                <span></span>
+                <span id="toAccountError"> </span>
+
+                <label for="amount"><b>Amount</b></label>
+                <input
+                        type="number"
+                        placeholder="119.95"
+                        name="amount"
+                        id="amount"
+                        class="balanceCheck"
+                        title="Enter a valid amount"
+                        th:value="${amount}"
+                        step=".01"
+                        min="0.01"
+                        required
+                />
+                <span></span>
+                <span id="amountError"></span>
+
+                <label for="description"><b>Description</b></label>
+                <input
+                        type="text"
+                        placeholder="example: Here's some money for your trip to Spain"
+                        name="description"
+                        id="description"
+                        title="Enter a valid description"
+                        th:value="${description}"
+                />
+                <span></span>
+                <span id="descriptionError"></span>
+                    <button type="submit" name="submit" id="submitButton" disabled=true value="Send Money">Send Money</button>
+                    <button type="button" id="backButton" value="Cancel">Cancel</button>
+
+            </form>
+            <form id="accountdetailsForm" th:action="@{accountdetails}" type="get">
+
+            </form>
+        </div>
+    </div>
+</body>
+
+<script src="js/navbar.js"></script>
+<script src="js/transactionFieldValidation.js" defer></script>
+<script defer>
+
+
+
+        document.getElementById('backButton').addEventListener("click", function(){
+
+                let e = document.getElementById("fromAccountNumber");
+                let accountnumber = e.options[e.selectedIndex].value;
+                console.log(accountnumber);
+
+
+
+            let input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", "accountNumber");
+            input.setAttribute("value", accountnumber);
+
+            let form = document.getElementById("accountdetailsForm");
+            form.appendChild(input);
+            form.submit();
+        //class="balanceCheck"
+
+        });
+
+
+</script>
+</html>

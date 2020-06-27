@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add accountholder</title>
+    <link type="text/css" href="css/navbar.css" rel="stylesheet" />
+    <link type="text/css" href="css/addaccountholder.css" rel="stylesheet" />
+</head>
+<body>
+
+<div id="navbar">
+    <a href="/logoutAction">Logout</a>
+    <a class="active" href="/accountOverview">Account Overview</a>
+    <span id="logoNavbar"></span>
+</div>
+
+<h1 class="content">Add accountholder</h1>
+<h3 class="content"> Enter the username of the person you want to add as <br>an accountholder and choose a verification code.</h3>
+
+<form id="form" method="post" class="form">
+
+    <div id="textfields">
+    Account number <input type="text" span th:value="${accountNumber}" disabled="disabled"/>
+
+    <label for="inviteeUsername">Username </label>
+    <input
+            type="text"
+            name="inviteeUsername"
+            id="inviteeUsername"
+            title="Enter an existing username"
+            th:value="${inviteeUsername}"
+            required
+    />
+
+    <span></span>
+
+    <label for="verificationCode">Verification code</label>
+    <input
+            type="number"
+            placeholder="12345"
+            name="verificationCode"
+            id="verificationCode"
+            title="Enter a five-digit code"
+            th:value="${verificationCode}"
+            step="1"
+            min="0"
+            required
+    />
+
+    <span></span>
+
+    <td><button type="submit" name="submit" id="submitButton" disabled=true value="Send invitation">Send invitation</button></td>
+
+    <h4> <span th:text="${message}"/> </h4>
+
+    </div>
+</form>
+
+</body>
+
+<script src="js/navbar.js"></script>
+<script src="js/addaccountholdervalidation.js" defer></script>
+
+</html>
+
+
+
+
+

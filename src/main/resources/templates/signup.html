@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Become a Royal Stacks customer!</title>
+
+    <link type="text/css" href="css/navbar.css" rel="stylesheet" />
+    <link type="text/css" href="css/signup.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.0.js" defer></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" defer></script>
+    <script type="application/javascript" src="js/navbar.js" defer></script>
+    <script type="application/javascript" src="js/regex.js" defer></script>
+    <script type="application/javascript" src="js/validate.js" defer></script>
+    <script type="application/javascript" src="js/submitbutton.js" defer></script>
+    <script type="application/javascript" src="js/api.js" defer></script>
+    <script type="application/javascript" src="js/signup.js" defer></script>
+</head>
+<body>
+<div id="navbar">
+    <a href="/">Login</a>
+    <span id="logoNavbar"></span>
+</div>
+<div class="content">
+<h1>Sign up</h1>
+<fieldset id="fieldset">
+    <h3><span id="notification"></span></h3>
+<div id="form">
+    <div id="formLeft">
+    <label for="username"><b>Username</b></label>
+        <div id="usernameNotAvailable" class="invalidInputPopup"><span>Choose another Username</span></div>
+    <input
+            type="text"
+            placeholder="JanJansen88"
+            name="username"
+            id="username"
+            title="Can contain lower case, uppercase, -, _ and must be between 3 and 20 characters in length "
+            th:value="${username}"
+            autofocus
+            required
+    /><span></span>
+
+<div id="passwordLabel">
+    <label for="password"><b>Password</b></label>
+</div>
+        <div id="passwordElements">
+        <input
+            type="password"
+            placeholder="At least 10 characters"
+            name="password"
+            id="password"
+            title="Must contain 1 lower case letter, 1 upper case letter, 1 number, 1 special character and at least 10 characters in length"
+            th:value="${password}"
+            required
+    /><input id="showPasswordButton" class="fa fa-fw fa-eye" type="button" value="show"><span></span>
+        </div>
+        <!-- Laat zien wanneer password geselecteerd is -->
+    <div id="passRequirements">
+        <div id="passRequirements1of2">
+            <p id="lowercase" class="passReqInvalid">A lowercase letter</p>
+            <p id="uppercase" class="passReqInvalid">A uppercase letter</p>
+            <p id="number" class="passReqInvalid">A number</p>
+        </div>
+        <div id="passRequirements2of2">
+            <p id="length" class="passReqInvalid">Minimum 10 characters</p>
+            <p id="special" class="passReqInvalid">A special character</p>
+        </div>
+    </div>
+
+
+
+    <div id="names">
+        <div id="firstNameDiv">
+    <label for="firstName"><b>First name</b></label>
+    <input
+            type="text"
+            placeholder="John"
+            name="firstName"
+            id="firstName"
+            title="Use letters or - only"
+            th:value="${firstName}"
+    /><span></span>
+        </div>
+
+        <div id="lastNameDiv">
+    <label for="lastName"><b>Last name</b></label>
+    <input
+            type="text"
+            placeholder="Johnson"
+            name="lastName"
+            id="lastName"
+            title="Use letters or - only"
+            th:value="${lastName}"
+    /><span></span>
+            </div>
+
+    </div>
+
+        <label for="BSN"><b>BSN</b></label><div id="BSNNotAvailable" class="invalidInputPopup"><span>BSN invalid</span></div>
+        <input
+                type="number"
+                placeholder="123456789"
+                name="BSN"
+                id="BSN"
+                th:value="${bsn}"
+        /><span></span>
+
+
+    </div>
+    <div id="formRight">
+        <label for="email"><b>Email</b></label>
+        <div id="InvalidEmail" class="invalidInputPopup"><span></span></div>
+        <input
+                type="email"
+                placeholder="mail@example.com"
+                name="email"
+                id="email"
+                th:value="${email}"
+        /><span></span>
+
+
+        <label for="phoneNumber"><b>Phone Number</b></label>
+        <div id="InvalidPhoneNumber" class="invalidInputPopup"><span></span></div>
+        <input
+                type="number"
+                placeholder="0612345678 or 0311234567"
+                name="phoneNumber"
+                id="phoneNumber"
+                title="Valid Dutch phone number starting with 0"
+                th:value="${phoneNumber}"
+        /><span></span>
+
+
+
+        <div id="addressFields">
+            <div id="postalCodeWrapper">
+                <label name="postalCode"><b>Postal code</b></label>
+                <input
+                        type="text"
+                        placeholder="9999AA"
+                        name="postalCode"
+                        id="postalCode"
+                        title="Valid postal code"
+                        th:value="${postalCode}"
+                /><span></span>
+            </div>
+        <div id="houseNumberWrapper">
+            <label for="houseNumber"><b>Number</b></label><span></span>
+            <input
+                    type="text"
+                    placeholder="120"
+                    name="houseNumber"
+                    id="houseNumber"
+                    max="6"
+                    title="Valid houseNumber"
+                    th:value="${houseNumber}"
+            /><span></span>
+
+        </div>
+            <div id="suffixWrapper">
+                <label for="suffix">Suffix</label>
+                <input
+                        type="text"
+                        placeholder=""
+                        name="suffix"
+                        id="suffix"
+                        max="10"
+                        title=""
+                        th:value="${suffix}"
+                /><span></span>
+
+            </div>
+        </div>
+        <div id="cityStreet">
+            <div id="cityDiv">
+        <label for="city"><b>City</b></label>
+        <input
+                type="text"
+                name="city"
+                id="city"
+                th:value="${city}"
+                readonly
+        /><span></span>
+            </div>
+            <div id="streetDiv">
+        <label for="Street"><b>Street</b></label>
+        <input
+                type="text"
+                name="street"
+                id="street"
+                th:value="${street}"
+                readonly
+        /><span></span>
+            </div>
+    </div>
+    </div>
+   <div id="signUpButton">
+    <td><button onclick="SubmitPost()" name="submit" id="submitButton" value="Sign up" disabled="disabled">Sign Up</button></td>
+    </div>
+</div>
+
+</fieldset>
+</div>
+<script>
+
+</script>
+</body>
+</html>

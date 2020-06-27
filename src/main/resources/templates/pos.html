@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link type="text/css" href="/css/pos.css" rel="stylesheet" />
+    <script type="text/javascript"  src="../js/api.js" defer></script>
+    <script type="text/javascript"  th:inline="javascript" src="../js/posgui.js" defer></script>
+    <script type="text/javascript"  th:inline="javascript" src="../js/journal.js" defer></script>
+    <script type="text/javascript"  th:inline="javascript" src="../js/pos.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Customer Terminal</title>
+</head>
+<body>
+<div>
+<div id="leftScreen">
+<span id="idNumber"></span>
+<h2>Seller</h2>
+<div id="themachineLeft" class="focus noselect">
+
+    <div class="container">
+
+        <ul id="displayL">
+            <span id="responseL" class="neutral"></span>
+            <li id="notify" class="titles">Enter amount</li>
+            <li id="displayPos"></li>
+        </ul>
+        <ul class="keyboard">
+            <a onclick="addNumberL(1);"><li class="letter" id="addNumberL1">1 </li></a>
+            <a onclick="addNumberL(2);"><li class="letter" id="addNumberL2">2</li></a>
+            <a onclick="addNumberL(3);"> <li class="letter" id="addNumberL3">3</li></a>
+            <a onclick="addNumberL(4);"><li class="letter clearl" id="addNumberL4">4</li></a>
+            <a onclick="addNumberL(5);"> <li class="letter" id="addNumberL5">5</li></a>
+            <a onclick="addNumberL(6);"> <li class="letter" id="addNumberL6">6</li></a>
+            <a onclick="addNumberL(7);"><li class="letter clearl" id="addNumberL7">7</li></a>
+            <a onclick="addNumberL(8);"> <li class="letter" id="addNumberL8">8</li></a>
+            <a onclick="addNumberL(9);"> <li class="letter" id="addNumberL9">9</li></a>
+            <a onclick="addNumberL(0);"> <li class="letter" id="addNumberL0">0</li></a>
+            <a onclick="stopButtonL();"> <li class="stop" id="stopButtonL">Stop</li></a>
+            <a onclick="delButtonL();"><li class="delete" id="delButtonL">Del</li></a>
+            <a onclick="okButtonL();"> <li class="return" id="okButtonL">Ok</li></a>
+            <a onclick="transButtonL();"> <li id="transButtonL" class="bottom">Trans</li></a>
+            <a onclick="connButtonL();"> <li id="connButtonL" class="bottom">Conn</li></a>
+            <a onclick="openButtonL();"><li id="openButtonL" class="bottom">Open</li></a>
+            <a onclick="closeButtonL();"> <li id="closeButtonL" class="bottom">Close</li></a>
+
+        </ul>
+    </div>
+    <div id="logo">
+        <h3 class="bottom clearl">ROYAL STACKS ♔</h3>
+    </div>
+</div>
+</div>
+</div>
+<div id="rightScreen">
+    <h2>Client</h2>
+    <div id="themachineRight" class="focusLight noselect">
+        <div>
+
+            <div class="container">
+                <ul id="displayR">
+                    <span id="response" class="neutral"></span>
+                    <span id="transactionInfo"></span>
+                    <li id="title">Account Number</li>
+                    <li id="displayAccountNumber"></li>
+                </ul>
+                <ul class="keyboard">
+                    <a onclick="addNumberR(1);"><li class="letter" id="addNumberR1">1 </li></a>
+                    <a onclick="addNumberR(2);"><li class="letter" id="addNumberR2">2</li></a>
+                    <a onclick="addNumberR(3);"> <li class="letter" id="addNumberR3">3</li></a>
+                    <a onclick="addNumberR(4);"><li class="letter clearl" id="addNumberR4">4</li></a>
+                    <a onclick="addNumberR(5);"> <li class="letter" id="addNumberR5">5</li></a>
+                    <a onclick="addNumberR(6);"> <li class="letter" id="addNumberR6">6</li></a>
+                    <a onclick="addNumberR(7);"><li class="letter clearl" id="addNumberR7">7</li></a>
+                    <a onclick="addNumberR(8);"> <li class="letter" id="addNumberR8">8</li></a>
+                    <a onclick="addNumberR(9);"> <li class="letter" id="addNumberR9">9</li></a>
+                    <a onclick="addNumberR(0);"> <li class="letter" id="addNumberR0">0</li></a>
+                    <a onclick="stopButtonR();"> <li class="stop" id="stopButtonR">Stop</li></a>
+                    <a onclick="delButtonR();"><li class="delete" id="delButtonR">Del</li></a>
+                    <a onclick="okButtonR();"> <li class="return" id="okButtonR">Ok</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="fillRightScreen"></div>
+<script type="text/javascript"  th:inline="javascript">
+        const identificationNumber = /*[[${pos.identificationNumber}]]*/ 'NOT CONNECTED';
+
+        if(identificationNumber === 0){
+            document.getElementById('idNumber').innerText = 'Not Connected'
+        } else {
+            document.getElementById('idNumber').innerText = identificationNumber;
+        }
+
+</script>
+</body>
+</html>

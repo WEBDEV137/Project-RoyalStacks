@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account confirmation</title>
+    <style>
+        body{
+            padding-top: 20px;
+            align-content: center;
+            background-color: #ebebeb;
+            margin: auto;
+            width: 40%;
+            font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif
+        }
+    </style>
+
+
+</head>
+<body th:object="${account}">
+    <p>Your account is created successfully you account number is
+        <span th:text="*{accountNumber}"/></p>
+
+    <form th:action="@{accountOverview}" method="get"><input type="submit" name="submitbutton" value="My Accounts" /></form>
+    <form th:action="@{accountdetails}"  method="post" ><input type="submit" name="submitbutton" value="Account details " hidden/></form>
+
+
+
+</body>
+</html>
