@@ -59,7 +59,6 @@ function disableButton(){
     }
 }
 
-
 function setClassValid(id) {
     if(document.getElementById(id).classList.contains('isInvalid')){
         document.getElementById(id).classList.remove('isInvalid');

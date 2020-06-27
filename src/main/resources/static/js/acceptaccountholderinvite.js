@@ -72,30 +72,42 @@ function disableButton(){
         document.getElementById("acceptButton").disabled = true;
     }
 }
+function containsClass(id, className){
+    return document.getElementById(id).classList.contains(className);
+}
+function removeClass(id, className){
+    return document.getElementById(id).classList.remove(className);
+}
+function addClass(id, className){
+    return document.getElementById(id).classList.add(className);
+}
 
+
+const invalid = 'isInvalid';
+const valid = 'isValid';
 
 function setClassValid(id) {
-    if(document.getElementById(id).classList.contains('isInvalid')){
-        document.getElementById(id).classList.remove('isInvalid');
+    if(containsClass(id, invalid)){
+        removeClass(id, invalid);
     }
-    if(!document.getElementById(id).classList.contains('isValid')) {
-        document.getElementById(id).classList.add('isValid');
+    if(!containsClass(id, valid)) {
+        addClass(id, valid);
     }
 }
 function setClassInvalid(id) {
-    if(!document.getElementById(id).classList.contains('isInvalid')) {
-        document.getElementById(id).classList.add('isInvalid');
+    if(!containsClass(id, invalid)) {
+        addClass(id, invalid);
     }
-    if(document.getElementById(id).classList.contains('isValid')){
-        document.getElementById(id).classList.remove('isValid');
+    if(containsClass(id, valid)){
+        removeClass(id, valid);
     }
 }
 function removeValidInValidClasses(id){
-    if(document.getElementById(id).classList.contains('isValid')){
-        document.getElementById(id).classList.remove('isValid');
+    if(containsClass(id, valid)){
+        removeClass(id, valid);
     }
-    if(document.getElementById(id).classList.contains('isInvalid')){
-        document.getElementById(id).classList.remove('isInvalid');
+    if(containsClass(id, invalid)){
+        removeClass(id, invalid);
     }
 }
 
